@@ -34,19 +34,20 @@ def setup(hass, cloud):
 
     def message_callback(mqtt_client, userdata, msg):
         """Handle IoT message."""
-        hass.add_job(handle_message, hass, client, msg.topic, msg.payload)
+        hass.add_job(async_handle_message, hass, client, msg.topic,
+                     msg.payload)
 
     if not client.connect(keepAliveIntervalSecond=KEEP_ALIVE):
         return False
 
     print("SUBSCRIBING", cloud.iot_topic)
-    client.subscribe(cloud.iot_topic, 1, handle_message)
+    client.subscribe(cloud.iot_topic, 1, message_callback)
     print("SUBSCRIBED!")
     return True
 
 
 @asyncio.coroutine
-def handle_message(hass, client, topic, payload):
+def async_handle_message(hass, client, topic, payload):
     """Handle an incoming IoT message."""
     print("topic", topic)
     print("payload", payload)
