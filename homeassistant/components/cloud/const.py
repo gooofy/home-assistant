@@ -1,14 +1,14 @@
 """Constants for the cloud component."""
 DOMAIN = 'cloud'
+CONFIG_DIR = '.cloud'
 REQUEST_TIMEOUT = 10
-AUTH_FILE = '.cloud'
 
 SERVERS = {
     'development': {
-        'client_id': '3k755iqfcgv8t12o4pl662mnos',
-        'identity_pool_id': 'us-west-2_vDOfweDJo',
-        'region': 'us-west-2',
-        'access_key_id': 'AKIAJGRK7MILPRJTT2ZQ',
-        'secret_access_key': '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'
+        'cognito_client_id': '5ue1uhqbrbah5v1istsrt5tfci',
+        'user_pool_id': 'us-east-1_6JB0r7TpZ',
+        'region': 'us-east-1',
+        'api_base': 'https://etjcgc8aq0.execute-api.us-east-1.amazonaws.com/dev/',
+        'iot_endpoint': 'a2xa1v8c9macdh.iot.us-east-1.amazonaws.com'
     }
 }
